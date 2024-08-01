@@ -268,9 +268,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#nesting-functions" class="md-nav__link">
+  <a href="#2-nesting-functions" class="md-nav__link">
     <span class="md-ellipsis">
-      Nesting Functions
+      2. Nesting Functions
     </span>
   </a>
   
@@ -296,29 +296,19 @@
 <h1 id="day-2-in-class-activities">Day 2: In class activities<a class="headerlink" href="#day-2-in-class-activities" title="Permanent link">&para;</a></h1>
 <h2 id="1-custom-functions">1. Custom Functions<a class="headerlink" href="#1-custom-functions" title="Permanent link">&para;</a></h2>
 <p>Let's create a function <code>temp_conv()</code>, which converts the temperature in Fahrenheit (input) to the temperature in Kelvin (output). </p>
-<details class="success">
-<summary>Hints</summary>
-<p><ul><li>We could perform a two-step calculation: first convert from Fahrenheit to Celsius, and then convert from Celsius to Kelvin.</li><li>The formula for these two calculations are as follows: temp_c = (temp_f - 32) * 5 / 9; temp_k = temp_c + 273.15.</li><li> <strong>To test your function:</strong> </li><li>if your input is 70, the result of <code>temp_conv(70)</code> should be 294.2611.</li></ul></p>
-</details>
-<h2 id="nesting-functions">Nesting Functions<a class="headerlink" href="#nesting-functions" title="Permanent link">&para;</a></h2>
-<p>Now we want to round the temperature in Kelvin (output of <code>temp_conv()</code>) to a single decimal place. </p>
-<details class="success">
-<summary>More Hints</summary>
-<p>Use the <code>round()</code> function with the newly-created  <code>temp_conv()</code> function to achieve this in one line of code. If your input is 70, the output should now be 294.3.</p>
-</details>
-<details class="warning">
-<summary>Solution</summary>
-<p><strong>Part 1</strong>
-    <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="w">    </span><span class="n">temp_conv</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">temp_f</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">        </span><span class="n">temp_c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">temp_f</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">32</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="m">9</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">        </span><span class="n">temp_k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">temp_c</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">273.15</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="nf">return </span><span class="p">(</span><span class="n">temp_k</span><span class="p">)</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">     </span><span class="p">}</span>
-</code></pre></div>
-<strong>Part 2</strong>
-    <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="w">    </span><span class="nf">round</span><span class="p">(</span><span class="nf">temp_conv</span><span class="p">(</span><span class="m">70</span><span class="p">),</span><span class="w"> </span><span class="n">digits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">)</span>
-</code></pre></div></p>
-</details>
+<ul>
+<li>
+<p>We could perform a two-step calculation: first convert from Fahrenheit to Celsius, and then convert from Celsius to Kelvin.</p>
+</li>
+<li>
+<p>The formula for these two calculations are as follows: temp_c = (temp_f - 32) * 5 / 9; temp_k = temp_c + 273.15.</p>
+</li>
+<li>
+<p>if your input is 70, the result of <code>temp_conv(70)</code> should be 294.2611.</li></ul></p>
+</li>
+</ul>
+<h2 id="2-nesting-functions">2. Nesting Functions<a class="headerlink" href="#2-nesting-functions" title="Permanent link">&para;</a></h2>
+<p>Now we want to round the temperature in Kelvin (output of <code>temp_conv()</code>) to a single decimal place. Use the <code>round()</code> function with the newly-created  <code>temp_conv()</code> function to achieve this in one line of code. If your input is 70, the output should now be 294.3.</p>
 <hr />
 <div class="admonition quote">
 <p class="admonition-title">Attribution notice</p>
