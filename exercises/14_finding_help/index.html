@@ -7,16 +7,16 @@
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
       
-        <meta name="author" content="HBC">
+        <meta name="author" content="Data Carpentry contributors, Mary Piper">
       
       
-        <link rel="canonical" href="https://github.com/hbctraining/Intro-to-R-mkdocs/lessons/05_in_class_exercises/">
+        <link rel="canonical" href="https://github.com/hbctraining/Intro-to-R-mkdocs/exercises/14_finding_help/">
       
       
-        <link rel="prev" href="../02_introR-R-and-RStudio/">
+        <link rel="prev" href="../13_exporting_data_and_plots/">
       
       
-        <link rel="next" href="../06_data_wrangling/">
+        <link rel="next" href="../15_tidyverse/">
       
       
       <link rel="icon" href="../../theme_figures/HBC_logo.png">
@@ -24,7 +24,7 @@
     
     
       
-        <title>Day 2: In class activities - Intro-to-R-mkdocs</title>
+        <title>Troubleshooting and finding help - Intro-to-R-mkdocs</title>
       
     
     
@@ -87,7 +87,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#day-2-in-class-activities" class="md-skip">
+        <a href="#learning-objectives" class="md-skip">
           Skip to content
         </a>
       
@@ -128,7 +128,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Day 2: In class activities
+              Troubleshooting and finding help
             
           </span>
         </div>
@@ -249,8 +249,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -259,20 +257,44 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-custom-functions" class="md-nav__link">
+  <a href="#learning-objectives" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Custom Functions
+      Learning Objectives
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#nesting-functions" class="md-nav__link">
+  <a href="#asking-for-help" class="md-nav__link">
     <span class="md-ellipsis">
-      Nesting Functions
+      Asking for help
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Asking for help">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#where-to-ask-for-help" class="md-nav__link">
+    <span class="md-ellipsis">
+      Where to ask for help?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#more-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      More resources
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -293,44 +315,130 @@
   
 
 
-<h1 id="day-2-in-class-activities">Day 2: In class activities<a class="headerlink" href="#day-2-in-class-activities" title="Permanent link">&para;</a></h1>
-<h2 id="1-custom-functions">1. Custom Functions<a class="headerlink" href="#1-custom-functions" title="Permanent link">&para;</a></h2>
-<p>Let's create a function <code>temp_conv()</code>, which converts the temperature in Fahrenheit (input) to the temperature in Kelvin (output). </p>
-<details class="success">
-<summary>Hints</summary>
-<p><ul><li>We could perform a two-step calculation: first convert from Fahrenheit to Celsius, and then convert from Celsius to Kelvin.</li><li>The formula for these two calculations are as follows: temp_c = (temp_f - 32) * 5 / 9; temp_k = temp_c + 273.15.</li><li> <strong>To test your function:</strong> </li><li>if your input is 70, the result of <code>temp_conv(70)</code> should be 294.2611.</li></ul></p>
-</details>
-<h2 id="nesting-functions">Nesting Functions<a class="headerlink" href="#nesting-functions" title="Permanent link">&para;</a></h2>
-<p>Now we want to round the temperature in Kelvin (output of <code>temp_conv()</code>) to a single decimal place. </p>
-<details class="success">
-<summary>More Hints</summary>
-<p>Use the <code>round()</code> function with the newly-created  <code>temp_conv()</code> function to achieve this in one line of code. If your input is 70, the output should now be 294.3.</p>
-</details>
-<details class="warning">
-<summary>Solution</summary>
-<p><strong>Part 1</strong>
-    <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="w">    </span><span class="n">temp_conv</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">temp_f</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">        </span><span class="n">temp_c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">temp_f</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">32</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="m">9</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">        </span><span class="n">temp_k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">temp_c</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">273.15</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="nf">return </span><span class="p">(</span><span class="n">temp_k</span><span class="p">)</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">     </span><span class="p">}</span>
+  <h1>Troubleshooting and finding help</h1>
+
+<p>Approximate time: 30 min</p>
+<h2 id="learning-objectives">Learning Objectives<a class="headerlink" href="#learning-objectives" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Identify different R-specific external sources to help with troubleshooting errors and obtaining more information about functions and packages.</li>
+</ul>
+<h2 id="asking-for-help">Asking for help<a class="headerlink" href="#asking-for-help" title="Permanent link">&para;</a></h2>
+<p>The key to getting help from someone is for them to grasp your problem rapidly. You
+should make it as easy as possible to pinpoint where the issue might be.</p>
+<ol>
+<li>
+<p>Try to <strong>use the correct words</strong> to describe your problem. For instance, a package
+is not the same thing as a library. Most people will understand what you meant,
+but others have really strong feelings about the difference in meaning. The key
+point is that it can make things confusing for people trying to help you. <strong>Be as
+precise as possible when describing your problem.</strong></p>
+</li>
+<li>
+<p><strong>Always include the output of <code>sessionInfo()</code></strong> as it provides critical information about your platform, the versions of R and the packages that you are using, and other information that can be very helpful to understand your problem.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">sessionInfo</span><span class="p">()</span><span class="w">  </span><span class="c1">#This time it is not interchangeable with search()</span>
 </code></pre></div>
-<strong>Part 2</strong>
-    <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="w">    </span><span class="nf">round</span><span class="p">(</span><span class="nf">temp_conv</span><span class="p">(</span><span class="m">70</span><span class="p">),</span><span class="w"> </span><span class="n">digits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">)</span>
-</code></pre></div></p>
-</details>
-<hr />
-<div class="admonition quote">
-<p class="admonition-title">Attribution notice</p>
+</li>
+<li>
+<p>If possible, <strong>reproduce the problem using a very small <code>data.frame</code></strong>
+instead of your 50,000 rows and 10,000 columns one, provide the small one with
+the description of your problem. When appropriate, try to generalize what you
+are doing so even people who are not in your field can understand the question. </p>
 <ul>
 <li>
-<p><em>This lesson has been developed by members of the teaching team at the <a href="http://bioinformatics.sph.harvard.edu/">Harvard Chan Bioinformatics Core (HBC)</a>. These are open access materials distributed under the terms of the <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution license</a> (CC BY 4.0), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.</em></p>
-</li>
-<li>
-<p><em>The materials used in this lesson are adapted from work that is Copyright © Data Carpentry (<a href="http://datacarpentry.org/).All">http://datacarpentry.org/).All</a> Data Carpentry instructional material is made available under the <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution license</a> (CC BY 4.0).</em></p>
+<p>To share an object with someone else, you can provide either the raw file (i.e., your CSV file) with
+your script up to the point of the error (and after removing everything that is
+not relevant to your issue). Alternatively, in particular if your questions is
+not related to a <code>data.frame</code>, you can save any other R data structure that you have in your environment to a file:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># DO NOT RUN THIS!</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nf">save</span><span class="p">(</span><span class="n">iris</span><span class="p">,</span><span class="w"> </span><span class="n">file</span><span class="o">=</span><span class="s">&quot;/tmp/iris.RData&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>The content of this <code>.RData</code> file is not human readable and cannot be posted directly on stackoverflow. It can, however, be emailed to someone who can read it with this command:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># DO NOT RUN THIS!</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nf">load</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="s">&quot;~/Downloads/iris.RData&quot;</span><span class="p">)</span>
+</code></pre></div>
 </li>
 </ul>
-</div>
+</li>
+</ol>
+<h3 id="where-to-ask-for-help">Where to ask for help?<a class="headerlink" href="#where-to-ask-for-help" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Google</strong> is often your best friend for finding answers to specific questions regarding R. <ul>
+<li>Cryptic error messages are very common in R - it is very likely that someone else has encountered this problem already! Start by googling the error message.  However, this doesn't always work because often, package developers rely on the error catching provided by R. You end up with general error messages that might not be very helpful to diagnose a problem (e.g. "subscript out of bounds").</li>
+</ul>
+</li>
+<li><strong>Stackoverflow</strong>: Search using the <code>[r]</code> tag. Most questions have already been answered, but the challenge is to use the right words in the search to find the answers: <a href="http://stackoverflow.com/questions/tagged/r">http://stackoverflow.com/questions/tagged/r</a>. If your question hasn't been answered before and is well crafted, chances are you will get an answer in less than 5 min.</li>
+<li><strong>Your friendly colleagues</strong>: if you know someone with more experience than you,
+  they might be able and willing to help you.</li>
+<li><strong>The <a href="https://stat.ethz.ch/mailman/listinfo/r-help">R-help</a></strong>: it is read by a
+  lot of people (including most of the R core team), a lot of people post to it,
+  but the tone can be pretty dry, and it is not always very welcoming to new
+  users. If your question is valid, you are likely to get an answer very fast
+  but don't expect that it will come with smiley faces. Also, here more than
+  everywhere else, be sure to use correct vocabulary (otherwise you might get an
+  answer pointing to the misuse of your words rather than answering your
+  question). You will also have more success if your question is about a base
+  function rather than a specific package.</li>
+<li><strong>The <a href="https://support.bioconductor.org/">Bioconductor support site</a></strong>. This is very useful and if you tag your post, there is a high likelihood of getting an answer from the developer.</li>
+<li>If your question is about a specific package, see if there is a mailing list
+  for it. Usually it's included in the DESCRIPTION file of the package that can
+  be accessed using <code>packageDescription("name-of-package")</code>. You may also want
+  to try to <strong>email the author</strong> of the package directly.</li>
+<li>There are also some <strong>topic-specific mailing lists</strong> (GIS, phylogenetics, etc...),
+  the complete list is <a href="http://www.r-project.org/mail.html">here</a>.</li>
+</ul>
+<h3 id="more-resources">More resources<a class="headerlink" href="#more-resources" title="Permanent link">&para;</a></h3>
+<ul>
+<li>The <a href="http://www.r-project.org/posting-guide.html">Posting Guide</a> for the R
+  mailing lists.</li>
+<li><a href="http://blog.revolutionanalytics.com/2014/01/how-to-ask-for-r-help.html">How to ask for R help</a>
+  useful guidelines</li>
+<li>The <a href="http://cran.r-project.org/doc/manuals/R-intro.pdf">Introduction to R</a> can also be dense for people with little programming experience but it is a good place to understand the underpinnings of the R language.</li>
+<li>The <a href="http://cran.r-project.org/doc/FAQ/R-FAQ.html">R FAQ</a> is dense and technical but it is full of useful information.</li>
+</ul>
+<hr />
+<p><strong>Exercises</strong></p>
+<ol>
+<li>
+<p>Run the following code chunks and fix all of the errors. (Note: The code chunks are independent from one another.)</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># Create vector of work days</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">work_days</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">Monday</span><span class="p">,</span><span class="w"> </span><span class="n">Tuesday</span><span class="p">,</span><span class="w"> </span><span class="n">Wednesday</span><span class="p">,</span><span class="w"> </span><span class="n">Thursday</span><span class="p">,</span><span class="w"> </span><span class="n">Friday</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Create a function to round the output of the sum function</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">round_the_sum</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">){</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">        </span><span class="nf">return</span><span class="p">(</span><span class="nf">round</span><span class="p">(</span><span class="nf">sum</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Create a function to add together three numbers</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">add_numbers</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">){</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">        </span><span class="nf">sum</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">)</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="p">}</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="nf">add_numbers</span><span class="p">(</span><span class="m">5</span><span class="p">,</span><span class="m">9</span><span class="p">)</span>
+</code></pre></div>
+</li>
+<li>
+<p>You try to install a package and you get the following error message:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>Error: package or namespace load failed for &#39;Seurat&#39; in loadNamespace(j &lt;- i[[1L]], c(lib.loc, .libPaths()), versionCheck = vI[[j]]): there is no package called &#39;multtest&#39;
+</code></pre></div>
+<p>What would you do to remedy the error?</p>
+</li>
+<li>
+<p>You would like to ask for help on an online forum. To do this you want the users of the forum to reproduce your problem, so you want to provide them as much relevant information and data as possible.</p>
+<ul>
+<li>You want to provide them with the list of packages that you currently have loaded, the version of R, your OS and package versions. Use the appropriate function(s) to obtain this information.</li>
+<li>You want to also provide a small data frame that reproduces the error (if working with a large data frame, you'll need to subset it down to something small). For this exercise use the data frame <code>df</code>, and save it as an RData object called <code>df.RData</code>. </li>
+<li>What code should the people looking at your help request should use to read in <code>df.RData</code>?</li>
+</ul>
+</li>
+</ol>
+<hr />
+<p><em>This lesson has been developed by members of the teaching team at the <a href="http://bioinformatics.sph.harvard.edu/">Harvard Chan Bioinformatics Core (HBC)</a>. These are open access materials distributed under the terms of the <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution license</a> (CC BY 4.0), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.</em></p>
+<ul>
+<li><em>The materials used in this lesson are adapted from work that is Copyright © Data Carpentry (<a href="http://datacarpentry.org/">http://datacarpentry.org/</a>). 
+All Data Carpentry instructional material is made available under the <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution license</a> (CC BY 4.0).</em></li>
+</ul>
 
 
 
@@ -351,7 +459,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    2024-07-31
+    2024-08-01
   </span>
 
     
