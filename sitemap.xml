@@ -31,6 +31,16 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://github.com/hbctraining/Intro-to-R-mkdocs/exercises/Intro_to_R_hw/</loc>
+         <lastmod>2024-08-01</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://github.com/hbctraining/Intro-to-R-mkdocs/exercises/Intro_to_R_key/</loc>
+         <lastmod>2024-08-01</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://github.com/hbctraining/Intro-to-R-mkdocs/exercises/functions_and_arguments/</loc>
          <lastmod>2024-08-01</lastmod>
          <changefreq>daily</changefreq>
