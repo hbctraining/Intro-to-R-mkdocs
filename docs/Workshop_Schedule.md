@@ -14,9 +14,9 @@
 
 | **Lesson**                                        | **Overview** | **Instructor** | **Time** |
 |:---------------------------------------------------|:-------------|:-------------|:-------------|
-|[Workshop Introduction](./day_1/workshop_intro_slides.pdf){ .md-button .md-button--primary} | Welcome and housekeeping | Elizabeth | 10:00-10:30 |
-|[Intro to R and RStudio](./day_1/D1.2_introR-R-and-RStudio.md){ .md-button .md-button--primary} | Introduction to R and RStudio| Noor | 10:30-11:45 |
-|[Self learning materials](#){ .md-button .md-button--primary} |Overview of self-learning materials | Elizabeth | 11:45-12:00 |
+|[Workshop Introduction](./day_1/workshop_intro_slides.pdf){ .md-button .md-button--primary} | Welcome and housekeeping | Will | 10:00-10:30 |
+|[Intro to R and RStudio](./day_1/D1.2_introR-R-and-RStudio.md){ .md-button .md-button--primary} | Introduction to R and RStudio| Elizabeth | 10:30-11:45 |
+|[Self learning materials](#){ .md-button .md-button--primary} |Overview of self-learning materials | Will | 11:45-12:00 |
 
 </div>
 
@@ -95,8 +95,8 @@ If you get stuck due to an error while running code in the lesson, [email us](ma
 | **Lesson**                                        | **Overview** | **Instructor** | **Time** |
 |:---------------------------------------------------|:-------------|:-------------|:-------------|
 |[Review self-learning](#before-the-next-class){ .md-button .md-button--primary } | Questions about self-learning| All | 10:00-10:50 |
-|[In-class exercises ](./day_2/D2.1_in_class_exercises.md){ .md-button .md-button--primary } | Use and customize function and arguments| Will | 10:50-11:15 |
-|[Data Wrangling](./day_2/D2.2_data_wrangling.md){ .md-button .md-button--primary} |Subsetting Vectors and Factors | Elizabeth | 11:15-12:00 |
+|[In-class exercises ](./day_2/D2.1_in_class_exercises.md){ .md-button .md-button--primary } | Use and customize function and arguments| Elizabeth | 10:50-11:15 |
+|[Data Wrangling](./day_2/D2.2_data_wrangling.md){ .md-button .md-button--primary} |Subsetting Vectors and Factors | Will | 11:15-12:00 |
 
 </div>
 
@@ -226,8 +226,8 @@ If you get stuck due to an error while running code in the lesson, [email us](ma
 | **Lesson**                                        | **Overview** | **Instructor** | **Time** |
 |:---------------------------------------------------|:-------------|:-------------|:-------------|
 |[Review self-learning](#before-the-next-class-1){ .md-button .md-button--primary } | Questions about self-learning| All | 10:00-10:35 |
-|[In-class exercises ](./day_3/D3.1_in_class_exercises.md){ .md-button .md-button--primary } | Customizing functions and arguments| Elizabeth | 10:50-11:15 |
-|[Plotting with ggplot2](./day_3/D3.2_plotting_with_ggplot2.md){ .md-button .md-button--primary} | ggplot2 for data visualization | Will | 11:15-12:00 |
+|[In-class exercises ](./day_3/D3.1_in_class_exercises.md){ .md-button .md-button--primary } | Customizing functions and arguments| Will | 10:50-11:15 |
+|[Plotting with ggplot2](./day_3/D3.2_plotting_with_ggplot2.md){ .md-button .md-button--primary} | ggplot2 for data visualization | Elizabeth | 11:15-12:00 |
 
 </div>
 
