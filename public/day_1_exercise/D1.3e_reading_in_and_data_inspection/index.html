@@ -452,7 +452,10 @@
 </tbody>
 </table>
 <p></center></p>
-<p>For example, if we have text file where the columns are separated by commas (comma-separated values or comma-delimited), you could use the function <code>read.csv</code>. However, if the data are separated by a different delimiter in a text file (e.g. ":", ";", " "), you could use the generic <code>read.table</code> function and specify the delimiter (<code>sep = " "</code>) as an argument in the function. </p>
+<p>For example, if we have text file where the columns are separated by commas (comma-separated values or comma-delimited), you could use the function <code>read.csv</code>. However, if the data are separated by a different delimiter in a text file (e.g. ":", ";", " ", "\t"), you could use the generic <code>read.table</code> function and specify the delimiter (<code>sep = " "</code>) as an argument in the function. </p>
+<blockquote>
+<p>Note: The <code>"\t"</code> delimiter is shorthand for tab.</p>
+</blockquote>
 <p>In the above table we refer to base R functions as being contained in the "utils" package. In addition to base R functions, we have also listed functions from some other packages that can be used to import data, specifically the "readr" package that installs when you install the "tidyverse" suite of packages.</p>
 <p>In addition to plain text files, you can also import data from other statistical analysis packages and Excel using functions from different packages. </p>
 <p><center></p>
@@ -540,10 +543,9 @@ The metadata is very important information and we encourage you to think about c
 <p><strong><em>The take-home from the "Usage" section for <code>read.csv()</code> is that it has one mandatory argument, the path to the file and filename in quotations; in our case that is <code>data/mouse_exp_design.csv</code> or <code>data/mouse_exp_design.txt</code>.</em></strong></p>
 <div class="admonition note">
 <p class="admonition-title">The <code>stringsAsFactors</code> argument</p>
-<p>Note that the <code>read.table {utils}</code> family of functions has an argument called <code>stringsAsFactors</code>, which by default will take the value of <code>default.stringsAsFactors()</code>. </p>
-<p>Type out <code>default.stringsAsFactors()</code> in the console to check what the default value is for your current R session. Is it <code>TRUE</code> or <code>FALSE</code>?</p>
-<p>If <code>default.stringsAsFactors()</code> is set to <code>TRUE</code>, then <code>stringsAsFactors = TRUE</code>. In that case any function in this family of functions will coerce <code>character</code> columns in the data you are reading in to <code>factor</code> columns (i.e. coerce from <code>vector</code> to <code>factor</code>) in the resulting data frame. </p>
-<p>If you want to maintain the <code>character vector</code> data structure (e.g. for gene names), you will want to make sure that <code>stringsAsFactors = FALSE</code> (or that <code>default.stringsAsFactors()</code> is set to <code>FALSE</code>).</p>
+<p>Note that the <code>read.table {utils}</code> family of functions has an argument called <code>stringsAsFactors</code>, which by default is set to FALSE (you can double check this by searching the Help tab for <code>read.table</code> or running <code>?read.table</code> in the console).</p>
+<p>If <code>stringsAsFactors = TRUE</code>, any function in this family of functions will coerce <code>character</code> columns in the data you are reading in to <code>factor</code> columns (i.e., coerce from <code>vector</code> to <code>factor</code>) in the resulting data frame.  </p>
+<p>If you want to maintain the <code>character vector</code> data structure (e.g., for gene names), you will want to make sure that <code>stringsAsFactors = FALSE</code>.</p>
 </div>
 <h3 id="create-a-data-frame-by-reading-in-the-file">Create a data frame by reading in the file<a class="headerlink" href="#create-a-data-frame-by-reading-in-the-file" title="Permanent link">&para;</a></h3>
 <p>At this point, please check the extension for the <code>mouse_exp_design</code> file within your <code>data</code> folder. You will have to type it accordingly within the <code>read.csv()</code> function.</p>
@@ -561,6 +563,24 @@ The metadata is very important information and we encourage you to think about c
 <p class="admonition-title">NOTE</p>
 <p>RStudio supports the automatic completion of code using the <kbd>Tab</kbd> key. This is especially helpful for when reading in files to ensure the correct file path. The tab completion feature also provides a shortcut to listing objects, and inline help for functions. <strong>Tab completion is your friend!</strong> We encourage you to use it whenever possible.</p>
 </div>
+<details>
+<summary><b>Click here to see how to import data using the <kbd>Import Dataset</kbd> button</b></summary>
+<br>You can also use the <kbd>Import Dataset</kbd> button in your Environment pane to import data. This option is not as appealing because it can lack reproducibility if not documented properly, but it can be helpful when getting started. In order to use the <kbd>Import Dataset</kbd>:<br><br>
+<ol><li>Left-click the <kbd>Import Dataset</kbd> button in the Environment pane</li>
+<li>Left-click <kbd>From Text (base...)</kbd></li>
+<li>Navigate to the file you would like to import and select <kbd>Open</kbd></li>
+<li>Type the name you would like the imported object to be called in the <code>Name</code> textbox.</li>
+<li>Select the delimiter that your file is using in the <code>Separator</code> dropdown menu</li>
+<li>Left-click <kbd>Import</kbd></li></ol>
+These steps are summarized in the GIF below:<br><br>
+<a class="glightbox" href="../img/Import_dataset.gif" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="../img/Import_dataset.gif" width="1000"></a><br><br>
+Now the dataset has been imported into your environment.<br><br>
+<blockquote>
+Note: If you are going to use this method, it could impact the reproducibility of your work, because the steps to do that import are not recorded anywhere. If you are going to use this method of importing data, it is <b><i>STRONGLY RECOMMENDED</i></b> that you copy the command that read the dataset in and is present in the console to an Rscript file. In the future, you can run that line of code from the Rscript file to recreate the data object.
+</blockquote>
+<hr />
+</details>
+
 <p>Go to your Global environment and click on the name of the data frame you just created. </p>
 <p><center>
 <a class="glightbox" href="../../img/metadata_env.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="img" src="../../img/metadata_env.png" width="500" /></a>
@@ -604,7 +624,7 @@ sample3        Wt    typeA      3
 sample4        KO    typeA      1
 sample5        KO    typeA      2
 sample6        KO    typeA      3
-ample7        Wt    typeB       1
+sample7        Wt    typeB      1
 sample8        Wt    typeB      2
 sample9        Wt    typeB      3
 sample10       KO    typeB      1
@@ -692,7 +712,7 @@ sample12       KO    typeB      3
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    2024-08-09
+    2025-02-14
   </span>
 
     

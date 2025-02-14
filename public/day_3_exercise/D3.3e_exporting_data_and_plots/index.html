@@ -373,31 +373,41 @@
 <p>The first (and easiest) is to export directly from the RStudio 'Plots' panel, by clicking on <code>Export</code> when the image is plotted. This will give you the option of <code>png</code> or <code>pdf</code> and selecting the directory to which you wish to save it to. It will also give you options to dictate the size and resolution of the output image.</p>
 </li>
 <li>
-<p>The second option is to use R functions and have the write to file hard-coded in to your script. This would allow you to run the script from start to finish and automate the process (not requiring human point-and-click actions to save).  In R’s terminology, <strong>output is directed to a particular output device and that dictates the output format that will be produced</strong>.  A device must be created or “opened” in order to receive graphical output and, for devices that create a file
-on disk, the device must also be closed in order to complete the output.</p>
+<p>The second option is to use R functions and have the write to file hard-coded in to your script. This would allow you to run the script from start to finish and automate the process (not requiring human point-and-click actions to save).  In R’s terminology, <strong>output is directed to a particular output device and that dictates the output format that will be produced</strong>. If we wanted to save our scatterplot to a pdf file format we can use a function called <code>ggsave</code> within <code>ggplot2</code> to help us.</p>
 </li>
 </ol>
-<p>If we wanted to print our scatterplot to a pdf file format, we would need to initialize a plot using a function which specifies the graphical format you intend on creating i.e.<code>pdf()</code>, <code>png()</code>, <code>tiff()</code> etc. Within the function you will need to specify a name for your image, and the with and height (optional). This will open up the device that you wish to write to:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1">## Open device for writing</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nf">pdf</span><span class="p">(</span><span class="s">&quot;figures/scatterplot.pdf&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nf">ggplot</span><span class="p">(</span><span class="n">new_metadata</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span><span class="nf">geom_point</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">age_in_days</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="w"> </span><span class="n">samplemeans</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">genotype</span><span class="p">,</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">            </span><span class="n">shape</span><span class="o">=</span><span class="n">celltype</span><span class="p">),</span><span class="w"> </span><span class="n">size</span><span class="o">=</span><span class="nf">rel</span><span class="p">(</span><span class="m">3.0</span><span class="p">))</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="nf">ggsave</span><span class="p">(</span><span class="s">&quot;figures/scatterplot.pdf&quot;</span><span class="p">)</span>
 </code></pre></div>
-<p>If you wish to modify the size and resolution of the image you will need to add in the appropriate parameters as arguments to the function when you initialize. Then we plot the image to the device, using the ggplot scatterplot that we just created. </p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1">## Make a plot which will be written to the open device, in this case the temp file created by pdf()/png()</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nf">ggplot</span><span class="p">(</span><span class="n">new_metadata</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">  </span><span class="nf">geom_point</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">age_in_days</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="w"> </span><span class="n">samplemeans</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">genotype</span><span class="p">,</span>
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">            </span><span class="n">shape</span><span class="o">=</span><span class="n">celltype</span><span class="p">),</span><span class="w"> </span><span class="n">size</span><span class="o">=</span><span class="nf">rel</span><span class="p">(</span><span class="m">3.0</span><span class="p">))</span><span class="w"> </span>
-</code></pre></div>
-<p>Finally, close the "device", or file, using the <code>dev.off()</code> function. There are also <code>bmp</code>, <code>tiff</code>, and <code>jpeg</code> functions, though the jpeg function has proven less stable than the others. </p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1">## Closing the device is essential to save the temporary file created by pdf()/png()</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nf">dev.off</span><span class="p">()</span>
-</code></pre></div>
-<div class="admonition note">
-<p class="admonition-title">Note 1</p>
-<ol>
-<li>You will not be able to open and look at your file using standard methods (Adobe Acrobat or Preview etc.) until you execute the <code>dev.off()</code> function.*</li>
-<li>In the case of <code>pdf()</code>, if you had made additional plots before closing the device, they will all be stored in the same file with each plot usually getting its own page, unless otherwise specified.*</li>
-</ol>
-</div>
+<p>You can specify the file format you would like it to print to with the <code>device</code> argument. However, <code>ggsave</code> will try to guess your preferred format from the extension that you provide in your file name. </p>
+<p>By default, <code>ggsave</code> will save the last image that you rendered. If you want to specify the plot to save you can store your image in an object and use the <code>plot</code> argument inside of <code>ggsave</code> to save that specific image.</p>
+<details>
+<summary><b>Click here to see how to save an image in base R</b></summary>
+A device must be created or “opened” in order to receive graphical output and, for devices that create a file on disk, the device must also be closed in order to complete the output.<br><br>
+If we wanted to print our scatterplot to a pdf file format, we would need to initialize a plot using a function which specifies the graphical format you intend on creating i.e.<code>pdf()</code>, <code>png()</code>, <code>tiff()</code> etc. Within the function you will need to specify a name for your image, and the with and height (optional). This will open up the device that you wish to write to:<br><br>
+<pre>
+## Open device for writing
+pdf("figures/scatterplot.pdf")
+</pre>
+If you wish to modify the size and resolution of the image you will need to add in the appropriate parameters as arguments to the function when you initialize. Then we plot the image to the device, using the ggplot scatterplot that we just created.<br><br>
+<pre>
+## Make a plot which will be written to the open device, in this case the temp file created by pdf()/png()
+ggplot(new_metadata) +
+  geom_point(aes(x = age_in_days, y= samplemeans, color = genotype,
+            shape=celltype), size=rel(3.0)) 
+</pre>
+Finally, close the "device", or file, using the <code>dev.off()</code> function. There are also <code>bmp</code>, <code>tiff</code>, and <code>jpeg</code> functions, though the <code>jpeg</code> function has proven less stable than the others.<br><br>
+<pre>
+## Closing the device is essential to save the temporary file created by pdf()/png()
+dev.off()
+</pre>
+<blockquote>
+<ol><li><i>You will not be able to open and look at your file using standard methods (Adobe Acrobat or Preview etc.) until you execute the <code>dev.off()</code> function.</i></li>
+<li><i>In the case of <code>pdf()</code>, if you had made additional plots before closing the device, they will all be stored in the same file with each plot usually getting its own page, unless otherwise specified.</i></li>
+</details>
+
 <hr />
 <div class="admonition quote">
 <p class="admonition-title">Attribution notice</p>
@@ -433,7 +443,7 @@ on disk, the device must also be closed in order to complete the output.</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    2024-08-09
+    2025-02-12
   </span>
 
     
